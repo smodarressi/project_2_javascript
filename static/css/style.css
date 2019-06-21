@@ -1,0 +1,51 @@
+body {
+    background-color: mistyrose;
+}
+
+h1 {
+    color: darkred;
+    text-align: center;
+    font-size: 36pt;
+}
+
+.stats-box {
+    background-color: darkred;
+    padding-bottom: 5pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
+    color: white;
+}
+
+stats-elements {
+    text-align: center;
+}
+
+.content-box {
+  background: white;
+  margin: 10px;
+  padding: 15px;
+/*  border-radius: 10px;*/
+  opacity: 0.8;
+  border-bottom-left-radius: 13pt;
+  border-top-right-radius: 13pt;
+  border-bottom-right-radius: 13pt;
+}
+
+.transbox {
+  background-color: rgba(255,255,255,0.5);
+}
+
+.background_image {
+  background-image: url("https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2018/08/shutterstock_488776972-e1534279337328.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;  
+  background-position: center 20%;
+}
+
+#kims-table
+
+#sherwins-map
+
+.object-container {
+  margin: 20pt;
+}

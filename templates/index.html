@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Let's Go Drinking!</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+    
+</head>
+
+<body>
+
+  <header class="background_image">
+      <div class="transbox">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg">
+              <h1>Let's Go Drinking!</h1>
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm content-box">
+                <h4>So, what and where are we drinking today in the great state of California?</h4>
+                <p>This site is here to help you find great places to drink wine and beer, right where it's made!  Just select whether you're looking for wine and/or beer, then you can search by the name of the winery/brewery or by the city in which you're going to be drinking!</p>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row stats-box">
+            <h3>Wine and Beer of California at a Glance!</h3>
+            <div class="col-sm-3">
+                <h4 style="text-align: center">Wineries:</h4>
+                <p style="text-align: center">4,800+</p>
+            </div>
+            <div class="col-sm-3">
+                <h4 style="text-align: center">First Winery Founded:</h4>
+                <p style="text-align: center">1769</p>
+            </div>
+            <div class="col-sm-3">
+                <h4 style="text-align: center">Breweries:</h4>
+                <p style="text-align: center">900+</p>
+            </div>
+            <div class="col-sm-3">
+                <h4 style="text-align: center">First Brewery Founded:</h4>
+                <p style="text-align: center">1896</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </header>
+
+  <div class="container">
+    <div class="row" style="margin-top: 20pt">
+      <div class="form-group col-sm-4">
+          <label for="inputWineBeer">Looking for Wine or Beer?</label>
+          <select id="inputWineBeer" class="form-control">
+            <option selected>Both!</option>
+            <option>Wine</option>
+            <option>Beer</option>
+          </select>
+      </div>
+      <div class="form-group col-sm-4">
+          <label for="inputWinery">Winery</label>
+          <input type="text" class="form-control" id="inputWinery" placeholder="Opus One">
+      </div>
+      <div class="form-group col-sm-4">
+          <label for="inputCity">City</label>
+          <select id="inputCity" class="form-control">
+            <option selected>Choose...</option>
+          </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg">
+        <h3>Mappy-Map!</h3>
+        <div id="sherwins-map"></div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+          <table class="table table-hover table-striped" id="kims-table">
+            <h3>All Information</h3>
+            <tr>
+              <th>header</th>
+              <th>another header</th>
+            </tr>
+            <tr>
+              <td>stuff</td>
+              <td>more stuff</td>
+            </tr>
+            <tr>
+              <td>stuff</td>
+              <td>more stuff</td>
+            </tr>
+          </table>
+        </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+
+</html>
