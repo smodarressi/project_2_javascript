@@ -11,12 +11,12 @@ function builddata() {
           console.log(selectValue);
       var selectElement1 = d3.select("#inputCity");
       var selectValue1 = selectElement1.property("value");
-          console.log(selectValue);
+          console.log(selectValue1);
       var inputElement1 = d3.select("#inputWinery");
       var inputValue1 = inputElement1.property("value");
           console.log(inputValue1);    
 
-      if (url.businesstype === selectValue && url.names === null && url.city === null);
+      if (url.businesstype === selectValue && url.names === null && url.city === "Choose...")
       { filteredData = url.filter();
           filteredData.forEach((entry) => {
           var tbody = d3.select("tbody");
@@ -24,11 +24,13 @@ function builddata() {
           Object.entries(entry).forEach(([key, value]) => {
           var cell = row.append("td");
           cell.text(value);
+           
       });
       });
+      console.log(filteredData);
       };
-          
-      if (url.businesstype === selectValue && url.names === null && url.city === selectValue1);
+        
+      if (url.businesstype === selectValue && url.names === null && url.city === selectValue1)
       { filteredData = url.filter();
           filteredData.forEach((entry) => {
           var tbody = d3.select("tbody");
@@ -40,7 +42,7 @@ function builddata() {
       });
       };
 
-      if (url.businesstype === null && url.names === selectValue || url.names.includes(selectValue) && tableData.city === selectValue);
+      if (url.businesstype === "Choose..." && url.names === inputValue1 && tableData.city === selectValue1)
       { filteredData1 = url.filter();
          filteredData1.forEach((entry) => {
           var tbody = d3.select("tbody");
@@ -52,7 +54,7 @@ function builddata() {
       });
       };
 
-      if (url.businesstype === null && url.names === null && url.city === selectValue1);
+      if (url.businesstype === null && url.names === null && url.city === selectValue1)
       { filteredData = url.filter();
           filteredData.forEach((entry) => {
           var tbody = d3.select("tbody");
@@ -81,7 +83,7 @@ function init() {
         .property("value", city);
     });
   });
-  // builddata();
+  builddata();
 };
 // Initialize the dashboard
 init();
