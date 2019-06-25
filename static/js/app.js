@@ -1,145 +1,87 @@
-function buildMetadata(sample) {
-  // @TODO: Complete the following function that builds the metadata panel
-  // Use `d3.json` to fetch the metadata for a sample
-    // Use d3 to select the panel with id of `#sample-metadata`
-  var url = `/metadata/${sample}`;
-  d3.json(url).then(function(sampleResponse) {
-    console.log(sampleResponse);
 
-    var sampleEntries = Object.entries(sampleResponse)
+function builddata() {
+  var url0 = `/allData`;
+  d3.json(url0).then(function(url){
+    var submit = d3.select("#submit-button");
+    submit.on("click", function() {
+    $("#kims-table tbody").empty();
+    d3.event.preventDefault();
+      var selectElement = d3.select("#inputWineBeer");
+      var selectValue = selectElement.property("value");
+          console.log(selectValue);
+      var selectElement1 = d3.select("#inputCity");
+      var selectValue1 = selectElement1.property("value");
+          console.log(selectValue);
+      var inputElement1 = d3.select("#inputWinery");
+      var inputValue1 = inputElement1.property("value");
+          console.log(inputValue1);    
 
-    d3.select("#sample-metadata")
-    // Use `.html("") to clear any existing metadata
-    .html("")
-    .selectAll("p")
-    .data(sampleEntries)
-    .enter()
-    .append("p")
-    // Use `Object.entries` to add each key and value pair to the panel
-    // Hint: Inside the loop, you will need to use d3 to append new
-    // tags for each key-value in the metadata.
-    .text(function([key, value]) {
-      return `${key}: ${value}`})
-
-  });
-
-
-
-
-
-    // BONUS: Build the Gauge Chart
-    // buildGauge(data.WFREQ);
-}
-
-function buildCharts(sample) {
-  // @TODO: Use `d3.json` to fetch the sample data for the plots
-  var url = `/samples/${sample}`;
-  d3.json(url).then(function(sampleResponse) {
-    console.log(sampleResponse);
-
-  
-    var otu_ids = sampleResponse["otu_ids"]
-    var otu_labels = sampleResponse["otu_labels"]
-    var sample_values = sampleResponse["sample_values"]
- 
-     // @TODO: Build a Pie Chart
-    // HINT: You will need to use slice() to grab the top 10 sample_values,
-    // otu_ids, and labels (10 each).
-    pieDataArr = []
-
-    sample_values.forEach(function(d, i) {
-      pieDataArr.push([sample_values[i], otu_labels[i], otu_ids[i]])
-    });
-
-    var sorted_pieDataArr = pieDataArr.sort(function compareFunction(firstNum, secondNum) {
-      return secondNum[0] - firstNum[0];
+      if (url.businesstype === selectValue && url.names === null && url.city === null);
+      { filteredData = url.filter();
+          filteredData.forEach((entry) => {
+          var tbody = d3.select("tbody");
+          var row = tbody.append("tr");
+          Object.entries(entry).forEach(([key, value]) => {
+          var cell = row.append("td");
+          cell.text(value);
       });
+      });
+      };
+          
+      if (url.businesstype === selectValue && url.names === null && url.city === selectValue1);
+      { filteredData = url.filter();
+          filteredData.forEach((entry) => {
+          var tbody = d3.select("tbody");
+          var row = tbody.append("tr");
+            Object.entries(entry).forEach(([key, value]) => {
+          var cell = row.append("td");
+            cell.text(value);
+      });
+      });
+      };
 
-    console.log(sorted_pieDataArr);
+      if (url.businesstype === null && url.names === selectValue || url.names.includes(selectValue) && tableData.city === selectValue);
+      { filteredData1 = url.filter();
+         filteredData1.forEach((entry) => {
+          var tbody = d3.select("tbody");
+          var row = tbody.append("tr");
+            Object.entries(entry).forEach(([key, value]) => {
+          var cell = row.append("td");
+            cell.text(value);    
+      });
+      });
+      };
 
-    var chart_sample_values = []
-    var chart_otu_ids = []
-    var chart_otu_labels = []
+      if (url.businesstype === null && url.names === null && url.city === selectValue1);
+      { filteredData = url.filter();
+          filteredData.forEach((entry) => {
+          var tbody = d3.select("tbody");
+          var row = tbody.append("tr");
+            Object.entries(entry).forEach(([key, value]) => {
+          var cell = row.append("td");
+            cell.text(value);
+      });
+      });
+      };
 
-    sorted_pieDataArr.forEach(function(arr) {
-      chart_sample_values.push(arr[0]),
-      chart_otu_ids.push(arr[2]),
-      chart_otu_labels.push(arr[1])
-    });
-
-    var data = [{
-      values: chart_sample_values.slice(0,10),
-      labels: chart_otu_ids.slice(0,10),
-      hovertext: chart_otu_labels.slice(0,10),
-      type: 'pie'
-    }];
-    
-    var layout = {
-      height: 700,
-      width: 700
-    };
-    
-    Plotly.newPlot('pie', data, layout);
-
-    // @TODO: Build a Bubble Chart using the sample data
-
-    var trace = {
-      x: chart_otu_ids,
-      y: chart_sample_values,
-      mode: 'markers',
-      type: 'scatter',
-      name: 'Team B',
-      text: chart_otu_labels,
-      marker: { size: chart_sample_values,
-        color: chart_otu_ids }
-    };
-    
-    var data = [trace];
-    
-    var layout = {
-      xaxis: {
-        range: [0, Math.max(chart_otu_ids)]
-      },
-      yaxis: {
-        range: [0, Math.max(chart_sample_values)*1.5]
-      },
-    };
-
-    Plotly.newPlot('bubble', data, layout);
-  });
-
-
-
-
-
-}
-
+});
+});
+};
+ 
 function init() {
-  // Grab a reference to the dropdown select element
-  var selector = d3.select("#selDataset");
-
-  // Use the list of sample names to populate the select options
-  d3.json("/names").then((sampleNames) => {
-    sampleNames.forEach((sample) => {
+  // Grab a reference to the dropdown select element in city field
+  var selector = d3.select("#inputCity");
+  var url1 = `/city`;
+  d3.json(url1).then((cityname) => {
+    // console.log(cityname)
+    cityname.forEach((city) => {
       selector
         .append("option")
-        .text(sample)
-        .property("value", sample);
+        .text(city)
+        .property("value", city);
     });
-
-    // Use the first sample from the list to build the initial plots
-    const firstSample = sampleNames[0];
-    buildCharts(firstSample);
-    buildMetadata(firstSample);
   });
-}
-
-function optionChanged(newSample) {
-  // Fetch new data each time a new sample is selected
-  buildCharts(newSample);
-  buildMetadata(newSample);
-}
-
+  builddata();
+};
 // Initialize the dashboard
 init();
-// buildMetadata(975);

@@ -6,9 +6,7 @@ import numpy as np
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import inspect
 from sqlalchemy import create_engine
-from sqlalchemy.pool import SingletonThreadPool
 
 from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
@@ -19,14 +17,12 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-db_uri = "sqlite:///static/data/brewerywinery.db"
-engine = create_engine(db_uri, poolclass=SingletonThreadPool)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///static/data/brewerywinery.db"
+db = SQLAlchemy(app)
+
 
 Base = automap_base()
 Base.prepare(engine, reflect=True)
-
-session = Session(engine)
-inspector = inspect(engine)
 
 brew_wine = Base.classes.brewery_winery_yelp
 City = Base.classes.brewery_winery_yelp
@@ -41,12 +37,11 @@ def city():
     """Return a list of cities."""
 
     # Use Pandas to perform the sql query
-    stmt = session.query(City.city).all()
-    result = [value for value, in stmt]
-    # df = pd.read_sql_query(result, session.bind)
-    session.close()
+    stmt = db.session.query(City).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+
     # Return a list of the column names (cities)
-    return jsonify(result)
+    return jsonify(list(df.columns)[6:])
 
 @app.route("/allData")
 def allData():
