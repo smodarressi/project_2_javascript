@@ -4,7 +4,7 @@ function builddata() {
   d3.json(url0).then(function(url){
     var submit = d3.select("#submit-button");
     submit.on("click", function() {
-    $("#kims-table tbody").empty();
+    // $("#kims-table tbody").empty();
     d3.event.preventDefault();
       var selectElement = d3.select("#inputWineBeer");
       var selectValue = selectElement.property("value");
@@ -81,7 +81,7 @@ function init() {
         .property("value", city);
     });
   });
-  builddata();
+  // builddata();
 };
 // Initialize the dashboard
 init();
