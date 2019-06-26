@@ -16,75 +16,33 @@ function builddata() {
       var inputValue1 = inputElement1.property("value");
           console.log(inputValue1);    
 
-//       // filteredData = url.filter(url => url.businesstype === selectValue && url.names.includes(inputValue1) && url.city === selectValue1);
-//       filteredData = url.filter(url => url.names.includes(inputValue1));
-//       console.log(filteredData);
+      if (selectValue !== 'Choose...' && inputValue1 !== null && selectValue1 !== 'Choose...') {
+        var filteredData = url.filter(url => url.businesstype === selectValue && url.names.includes(inputValue1) && url.city === selectValue1)}
+      else if (selectValue === 'Choose...' && inputValue1 !== null && selectValue1 !== 'Choose...') {
+        var filteredData = url.filter(url => url.names.includes(inputValue1) && url.city === selectValue1)}
+      else if (selectValue === 'Choose...' && inputValue1 === null && selectValue1 !== 'Choose...') {
+        var filteredData = url.filter(url => url.city === selectValue1)}
+      else if (selectValue !== 'Choose...' && inputValue1 === null && selectValue1 !== 'Choose...') {
+        var filteredData = url.filter(url => url.businesstype === selectValue && url.city === selectValue1)}
+      else if (selectValue === 'Choose...' && inputValue1 !== null && selectValue1 === 'Choose...') {
+        var filteredData = url.filter(url => url.names.includes(inputValue1))};
+
+      console.log(filteredData);
     
-//       filteredData.forEach((entry) => {
-//         var tbody = d3.select("tbody");
-//         var row = tbody.append("tr");
-//           Object.entries(entry).forEach(([key, value]) => {
-//         var cell = row.append("td");
-//           cell.text(value);
-//       });
-//     });
-//    });
-//   });
-// }
+      d3.select("tbody").text("");
 
-      if (url.businesstype === selectValue && url.names === inputElement1 && url.city === selectValue1)
-      { filteredData = url.filter();
-          filteredData.forEach((entry) => {
-          var tbody = d3.select("tbody");
-          var row = tbody.append("tr");
+      filteredData.forEach((entry) => {
+        var tbody = d3.select("tbody");
+        var row = tbody.append("tr");
           Object.entries(entry).forEach(([key, value]) => {
-          var cell = row.append("td");
+        var cell = row.append("td");
           cell.text(value);
-           
       });
-      });
- 
-      };
-        
-      // if (url.businesstype === selectValue && url.names === null && url.city === selectValue1)
-      // { filteredData = url.filter();
-      //     filteredData.forEach((entry) => {
-      //     var tbody = d3.select("tbody");
-      //     var row = tbody.append("tr");
-      //       Object.entries(entry).forEach(([key, value]) => {
-      //     var cell = row.append("td");
-      //       cell.text(value);
-      // });
-      // });
-      // };
+    });
+   });
+  });
+}
 
-      // if (url.businesstype === "Choose..." && url.names === inputValue1 && tableData.city === selectValue1)
-      // { filteredData1 = url.filter();
-      //    filteredData1.forEach((entry) => {
-      //     var tbody = d3.select("tbody");
-      //     var row = tbody.append("tr");
-      //       Object.entries(entry).forEach(([key, value]) => {
-      //     var cell = row.append("td");
-      //       cell.text(value);    
-      // });
-      // });
-      // };
-
-      // if (url.businesstype === null && url.names === null && url.city === selectValue1)
-      // { filteredData = url.filter();
-      //     filteredData.forEach((entry) => {
-      //     var tbody = d3.select("tbody");
-      //     var row = tbody.append("tr");
-      //       Object.entries(entry).forEach(([key, value]) => {
-      //     var cell = row.append("td");
-      //       cell.text(value);
-      // });
-      // });
-      // };
-
-});
-});
-};
  
 function init() {
   // Grab a reference to the dropdown select element in city field
