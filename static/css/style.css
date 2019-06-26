@@ -1,5 +1,7 @@
 body {
     background-color: mistyrose;
+    padding: 0;
+    margin: 0;
 }
 
 h1 {
@@ -49,3 +51,12 @@ stats-elements {
 .object-container {
   margin: 20pt;
 }
+
+#sherwins-map {
+  height: 450px;
+ }
+ 
+ .awesome-marker i {
+  font-size: 18px;
+  margin-top: 10px;
+ }

@@ -9,24 +9,6 @@
   <title>Let's Go Drinking!</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/css/style.css">
-
-  <!-- Leaflet CSS & JS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
-  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-  crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
-  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-  crossorigin=""></script>
-
-  <!-- FontAwesome for Leaflet Icons -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.awesome-markers@2.0.4/dist/leaflet.awesome-markers.css" />
-
-  <!-- Iconicon Sheet for Leaflet Markers-->
-  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
-
-  <!-- Stuff for Markers -->
-  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.awesome-markers@2.0.4/dist/leaflet.awesome-markers.css" />
     
 </head>
 
@@ -83,7 +65,7 @@
           </select>
       </div>
       <div class="form-group col-sm-4">
-          <label for="inputWinery">Business Name</label>
+          <label for="inputWinery">Winery</label>
           <input type="text" class="form-control" id="inputWinery" placeholder="Opus One">
       </div>
       <div class="form-group col-sm-4">
@@ -99,12 +81,10 @@
       </div>
     </div>
     <div class="row">
-    <div class="col-sm-3"></div>
-      <div class="col-sm-6">
+      <div class="col-lg">
         <h3>Mappy-Map!</h3>
         <div id="sherwins-map"></div>
       </div>
-    <div class="col-sm-3"></div>
     </div>
     <div class="row">
         <div class="col-sm">
@@ -132,14 +112,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <!-- API key -->
-  <script src="{{ url_for('static', filename='js/config.js') }}"></script>
-  <!-- Our JS -->
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-   <!-- Leaflet Makers -->
-   <script src="https://unpkg.com/leaflet.awesome-markers@2.0.4/dist/leaflet.awesome-markers.js"></script>
-   
-
 
 </body>
 
